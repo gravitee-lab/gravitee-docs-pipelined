@@ -1,13 +1,13 @@
-= Management API Configuration
+= Configure AM Gateway
 :page-sidebar: am_3_x_sidebar
-:page-permalink: am/current/am_installguide_management_api_configuration.html
+:page-permalink: am/current/am_installguide_gateway_configuration.html
 :page-folder: am/installation-guide
 :page-liquid:
 :page-layout: am
-:page-description: Gravitee.io Access Management - Configuration - API Management
+:page-description: Gravitee.io Access Management - Configuration - Gateway
 :page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-include::partial/how-to-configure.adoc[leveloffset=+1]
+include::../partial/how-to-configure.adoc[leveloffset=+1]
 
 == HTTP Server
 
@@ -15,8 +15,8 @@ HTTP server configuration.
 
 [source,yaml]
 ----
-jetty:
-  port: 8093
+http:
+  port: 8092
   idleTimeout: 0
   tcpKeepAlive: true
   compressionSupported: false
@@ -54,13 +54,12 @@ After that, you have to enable secure mode in your gravitee.yml :
 
 [source,yaml]
 ----
-jetty:
-  port: 8093
+http:
+  port: 8092
   idleTimeout: 0
   tcpKeepAlive: true
   compressionSupported: false
-  pool:
-    workers: 100
+  instances: 0
   secured: true
   ssl:
     clientAuth: false
@@ -96,7 +95,7 @@ email:
 
 == Plugins repository
 
-Gravitee.io Gateway <<gravitee-plugins,plugins>> directory configuration.
+Gravitee.io Access Gateway <<gravitee-plugins,plugins>> directory configuration.
 
 [source,yaml]
 ----
@@ -106,10 +105,10 @@ plugins:
 
 == Management repository
 
-Management repository is used to store global configuration such as APIs, applications, apikeys, ...
+Management repository is used to store global configuration such as security domains, clients, tokens, users, ...
 This is the default configuration using MongoDB (single server). For more information about MongoDB configuration, please have a look to:
 
-http://api.mongodb.org/java/current/com/mongodb/MongoClientOptions.html
+https://api.mongodb.com/java/3.0/?com/mongodb/MongoClientOptions.html
 
 [source,yaml]
 ----
@@ -160,37 +159,4 @@ management:
 #    dbname: ${ds.mongodb.dbname}
 #    connectTimeout: 500
 #    socketTimeout: 250
-----
-
-== Load Balancing
-
-If you're a planning to use multiple instances, you need to implement sticky sessions in your load balancer, until https://github.com/gravitee-io/issues/issues/2523[this issue] is closed.
-
-=== Apache
-
-Example using three instances of AM Management API. We add an aditional cookie named ROUTEID.
-TLS termination is configured in Apache, so we just use http.
-
-----
-<Proxy balancer://amm_hcluster>
-        BalancerMember http://GRAVITEEIO-AM-MGT-API-HOST1:8093 route=apim1-test
-        BalancerMember http://GRAVITEEIO-AM-MGT-API-HOST2:8093 route=apim2-test
-        BalancerMember http://GRAVITEEIO-AM-MGT-API-HOST3:8093 route=apim3-test
-        ProxySet stickysession=ROUTEID
-        ProxySet lbmethod=byrequests
-        Header add Set-Cookie "ROUTEID=.%{BALANCER_WORKER_ROUTE}e;" env=BALANCER_ROUTE_CHANGED
-        Header append Via %{BALANCER_WORKER_ROUTE}e
-</Proxy>
-----
-
-Then in your VirtualHost configuration we declare the paths we want to proxy:
-
-----
-# Management Realm
-ProxyPass /admin balancer://amm_hcluster/admin
-ProxyPassReverse /admin balancer://amm_hcluster/admin
-
-# Management
-ProxyPass /management balancer://amm_hcluster/management
-ProxyPassReverse /management balancer://amm_hcluster/management
 ----

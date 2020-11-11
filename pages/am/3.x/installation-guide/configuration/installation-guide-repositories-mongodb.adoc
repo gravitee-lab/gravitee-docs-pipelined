@@ -1,50 +1,17 @@
-= Repositories
+= MongoDB
 :page-sidebar: am_3_x_sidebar
-:page-permalink: am/current/am_installguide_repositories.html
+:page-permalink: am/current/am_installguide_repositories_mongodb.html
 :page-folder: am/installation-guide
 :page-liquid:
 :page-layout: am
-:page-description: Gravitee.io Access Management - Repositories
+:page-description: Gravitee.io Access Management - Repositories - MongoDB
 :page-keywords: Gravitee.io, API Platform, API Management, Access Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-In Gravitee.io Access Management, repositories are used to store different type of datas (different scopes).
-Repositories are configured in the `gravitee.yml` configuration file an can be different for each scope.
-For example you can decide to put the management in MongoDB, rate limit in Redis and analytics in Elasticsearch.
+https://www.mongodb.org/[MongoDB] is the default repository implementation used by AM.
 
-[[gravitee-repositories-scopess]]
-== Scopes
+The configuration options are as follows:
 
-* Management: All the data to manage the Gravitee.io Access Management platform, including security domains, clients,
-identity providers, ...
-* OAuth2: Tokens generated for OAuth2
-
-[[gravitee-repositories-types]]
-== Supported storage
-Here is the matrix between scopes and implementations.
-
-**Compatibility Matrix: **
-|===
-|Scope|MongoDB|Redis |Elasticsearch| Cassandra
-
-|Management
-|X
-|-
-|-
-|-
-
-|OAuth2
-|X
-|-
-|-
-|-
-
-|===
-
-[[gravitee-repository-mongodb-configuration]]
-=== MongoDB
-
-Default implementation is based on https://www.mongodb.org/[MongoDB], let's see the configuration options:
-
+== Configuration
 [source,yaml]
 ----
 # ===================================================================
@@ -60,7 +27,7 @@ management:
     port:                   # mongodb port (default 27017)
 ----
 
-NOTE: This is the minimum sample file to start with a mongo server, number of other properties control the behavior of mongo database, let's jump into it.
+NOTE: This is the minimum sample file to start with a MongoDB server. A number of other properties control the behavior of the MongoDB database, as described below.
 
 [source,yaml]
 ----
@@ -96,4 +63,4 @@ management:
     cursorFinalizerEnabled:     # mongodb cursor finalizer enabled (default false)
 ----
 
-NOTE: All theses properties allow you to fine tuned your MongoDB connection
+NOTE: All theses properties allow you to fine tune your MongoDB connection.

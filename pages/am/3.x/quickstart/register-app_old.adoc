@@ -6,7 +6,7 @@
 
 This section walks you through creating your first application with AM Console.
 
-NOTE: If you are running AM with our link:/am/current/am_installguide_docker.html#docker_compose[Docker Compose image], the http://GRAVITEEIO-AM-UI-HOST must be https://localhost/am/ui.
+NOTE: If you are running AM with our link:/am/current/am_installguide_docker_compose.html[Docker Compose image], \http://GRAVITEEIO-AM-UI-HOST must be \https://localhost/am/ui.
 
 == Create a security domain
 

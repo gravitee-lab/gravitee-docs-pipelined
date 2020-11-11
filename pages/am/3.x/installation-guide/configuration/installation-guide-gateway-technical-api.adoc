@@ -1,4 +1,4 @@
-= Technical API
+= Configure the AM Gateway internal API
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_gateway_technical_api.html
 :page-folder: am/installation-guide
@@ -8,4 +8,4 @@
 :gravitee-component-name: AM Gateway
 
 :node_port: 18092
-include::../../../node/partial/technical-api.adoc[leveloffset=+1]
+include::../../../../node/partial/technical-api.adoc[leveloffset=+1]

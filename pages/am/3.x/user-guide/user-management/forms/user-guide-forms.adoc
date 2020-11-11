@@ -1,10 +1,12 @@
-== Custom forms
+= Custom forms
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_userguide_user_management_forms.html
 :page-folder: am/user-guide
 :page-layout: am
 
-Gravitee.io AM is shipped with predefined forms containing relating identity and access functionality which occur during authorization process.
+== Overview
+
+AM comes with predefined forms containing related identity and access functionality which comes into play during the authorization process.
 
 === Available forms
 

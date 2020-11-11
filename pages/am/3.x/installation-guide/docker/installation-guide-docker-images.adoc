@@ -1,4 +1,4 @@
-= Docker
+= AM Docker images
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_docker_images.html
 :page-folder: am/installation-guide
@@ -7,13 +7,19 @@
 :docker-hub: https://hub.docker.com/r/graviteeio
 :page-layout: am
 
-IMPORTANT: We assume that you are familiar with Docker terms. +
-To run our official images, you must start by installing https://docs.docker.com/installation/[Docker]
+== Overview
 
-Gravitee.io Access Management Docker images are https://hub.docker.com/u/graviteeio/[available on Docker Hub].
-You could find all https://github.com/gravitee-io/graviteeio-access-management/tree/master/docker/[Dockerfiles on GitHub].
+This section explains how to run AM images in Docker. These procedures are intended for users who are already familiar with Docker.
 
-We provide a complete set of images.
+== Prerequisites
+
+To run our official images, you must first install https://docs.docker.com/installation/[Docker^].
+
+== Images
+
+You can find the complete set of AM images on https://hub.docker.com/u/graviteeio/[on Docker Hub].
+
+NOTE: You can also find all the https://github.com/gravitee-io/graviteeio-access-management/tree/master/docker/[Docker files on GitHub^].
 
 == Images
 |===
@@ -38,8 +44,9 @@ We provide a complete set of images.
 
 === graviteeio/am-gateway
 
-The AM gateway image provides a set of environment variables which could be used to tune your container.
-Because mongoDB is our default repository, you can replace default mongoDB address (`localhost:27017`) by the one you provide (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
+The AM Gateway image provides a set of environment variables which you can use to tune your container.
+
+You can replace the address of the default MongoDB repository (`localhost:27017`) with your own (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
 
 ==== Run the image
 [source,shell]
@@ -52,10 +59,11 @@ $ docker run  \
 ....
 
 ==== Configure the container
-If you want to override the default configuration for MongoDB and all other properties included in the `gravitee.yml` file,
-you have to use environment variables. Please have a look to the API Gateway <<am_installguide_gateway_configuration.adoc#environment_variables, configuration>> section.
+If you want to override the default configuration for MongoDB and any other properties included in the `gravitee.yml` file,
+you need to use environment variables. For more information, see the AM Gateway <<am_installguide_gateway_configuration.adoc#environment_variables, configuration>> section.
 
-Here is an example to set the mongodb connection:
+The following example changes the MongoDB connection:
+
 [source,shell]
 ....
 $ docker run  \
@@ -68,8 +76,8 @@ $ docker run  \
 
 === graviteeio/am-management-api
 
-The AM management-api image provides a set of environment variables which could be used to tune your container.
-Because mongoDB is our default repository, you can replace default mongoDB address (`localhost:27017`) by the one you provide (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
+The AM API image provides a set of environment variables which you can use to tune your container.
+You can replace the address of the default MongoDB repository (`localhost:27017`) with your own (`GRAVITEE_MONGODB_HOST:GRAVITEE_MONGODB_PORT`).
 
 ==== Run the image
 [source,shell]
@@ -82,10 +90,11 @@ $ docker run \
 ....
 
 ==== Configure the container
-If you want to override the default configuration for MongoDB and all other properties included in the `gravitee.yml` file,
-you have to use environment variables. Please have a look to the Management API <<am_installguide_management_api_configuration.adoc#environment_variables, configuration>> section.
+If you want to override the default configuration for MongoDB and any other properties included in the `gravitee.yml` file,
+you need to use environment variables. For more information, see the AM API <<am_installguide_management_api_configuration.adoc#environment_variables, configuration>> section.
 
-Here is an example to set the mongodb connection:
+The following example changes the MongoDB connection:
+
 [source,shell]
 ....
 $ docker run \
@@ -98,9 +107,8 @@ $ docker run \
 
 === graviteeio/am-management-ui
 
-The AM portal image provides a set of environment variables which could be used to tune your container.
-The UI need to know where the AM management-api is.
-So you have to override `MGMT_API_URL` to specify where the management-api is running.
+The AM Console image provides a set of environment variables which you can use to tune your container.
+AM Console needs AM API to run, so you need to update `MGMT_API_URL` to specify where `management-api` is running.
 
 ==== Run the image
 [source,shell]

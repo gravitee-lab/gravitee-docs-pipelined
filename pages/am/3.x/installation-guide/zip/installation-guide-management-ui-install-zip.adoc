@@ -1,4 +1,4 @@
-= Install Portal with `.zip`
+= Install AM Console
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_management_ui_install_zip.html
 :page-folder: am/installation-guide
@@ -7,33 +7,37 @@
 :page-description: Gravitee.io Access Management - Management UI - Installation with .zip
 :page-keywords: Gravitee.io, API Platform, API Management, API Gateway, oauth2, openid, documentation, manual, guide, reference, api
 
-== System Requirements
+== Prerequisites
+
+Your environment must meet the requirements listed below before you install AM Console.
+
+NOTE: Before you begin, ensure AM API is installed and running.
 
 === Browsers
 
-Access Management UI has been tested with the latest versions of Google Chrome, Firefox and Internet Explorer >= 10
+AM Console is supported with the two most recent versions of modern internet browsers.
 
-== Installing from the ZIP archive
+== Download and extract the .zip archive
 
-The binaries are available from https://download.gravitee.io/graviteeio-am/components/gravitee-am-webui/gravitee-am-webui-{{ site.products.am.version }}.zip.
-
+. Download the binaries https://download.gravitee.io/graviteeio-am/components/gravitee-am-gateway/gravitee-am-gateway-standalone-{{ site.products.am.version }}.zip[here^] or from the https://gravitee.io/downloads/access-management[Gravitee download site^].
++
 [source,bash]
 [subs="attributes"]
 $ curl -L https://download.gravitee.io/graviteeio-am/components/gravitee-am-webui/gravitee-am-webui-{{ site.products.am.version }}.zip -o gravitee-am-webui-{{ site.products.am.version }}.zip
-
-Once file has been downloaded, you just have to unpack it in the right place
-
++
+Unpack the archive and place the folders in the required location.
++
 [source,bash]
 [subs="attributes"]
 $ unzip gravitee-am-webui-{{ site.products.am.version }}.zip
 
-=== Deploy
+== Deploy or run AM Console
 
-The AM Management UI is a client-side Angular application and can be deployed on any HTTP server like https://httpd.apache.org/[Apache] or http://nginx.org/[Nginx].
+AM Console is a client-side Angular application and can be deployed on any HTTP server, such as https://httpd.apache.org/[Apache^] or http://nginx.org/[Nginx^].
 
-NOTE: The AM UI use HTML5 mode and requires server side rewrites to make it works. Here are examples with Apache and Nginx
+NOTE: AM Console uses HTML5 mode and requires server side rewrites to make it work, such as in the Apache and Nginx examples below.
 
-==== Apache
+=== Apache
 
 ----
 <VirtualHost *:80>
@@ -55,7 +59,7 @@ NOTE: The AM UI use HTML5 mode and requires server side rewrites to make it work
 </VirtualHost>
 ----
 
-==== Nginx
+=== Nginx
 
 ----
 server {

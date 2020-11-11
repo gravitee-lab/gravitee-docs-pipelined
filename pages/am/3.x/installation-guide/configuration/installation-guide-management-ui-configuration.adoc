@@ -1,4 +1,4 @@
-= Portal Configuration
+= Configure AM Console
 :page-sidebar: am_3_x_sidebar
 :page-permalink: am/current/am_installguide_management_ui_configuration.html
 :page-folder: am/installation-guide
@@ -9,9 +9,9 @@
 
 == How to configure
 
-You can configure your web UI with a file named `constants.json`.
+You can configure AM Console with a file named `constants.json`.
 
-The only mandatory values in the `constants.json` file is :
+The only mandatory values in the `constants.json` file are:
 
 ```
 $ cd gravitee-am-webui-{{ site.products.am.version }}
@@ -22,4 +22,4 @@ $ vi constants.json
 }
 ```
 
-It describes where is the management api to be able to request it.
+It describes where AM API is, so that it can send requests to it.

@@ -9,10 +9,6 @@
 
 == Overview
 
-The following sections explain how to configure the following aspects of AM after installation:
-
-- AM Gateway
-- AM API
-- AM Portal
+This guide explains how to configure the AM components and repositories after installation.
 
 For more details of ongoing AM configuration tasks, see the *Administration Guide*.
