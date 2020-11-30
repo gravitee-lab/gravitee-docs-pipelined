@@ -34,6 +34,11 @@ entries:
             output: web
             url: /apim/3.x/apim_quickstart_publish.html
             subfolders:
+              - title: Get started
+                output: web
+                subfolderitems:
+                  - title: Log in to APIM Console
+                  - title: Log in to APIM Portal
               - title: Publish your first API
                 output: web
                 subfolderitems:
